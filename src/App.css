@@ -2,9 +2,19 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.line {
+  
+  stroke-width: 3;
+  stroke: red;
+}
+.departureBox  {
+
+ width: 150px;
+ height: 150px;
+
+}
+.arrivalBox {
+  fill: red;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,7 +23,8 @@
   }
 }
 
-.App-header {
+
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -26,7 +37,7 @@
 
 .App-link {
   color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +46,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.noStation{
+  fill: gray;
+}
+.noLine {
+  stroke: gray;
+}
+.highburyIslington {
+  fill: #0098D4;
+}
+
+.victoria {
+  stroke: #0098D4;
+}
+.oxford {
+  fill: #0098D4;
+}
+.paddington {
+  fill: #F3A9BB;
+}
+.king {
+  fill: #F3A9BB;
+}
+.hammersmith {
+  stroke: #F3A9BB;
 }
