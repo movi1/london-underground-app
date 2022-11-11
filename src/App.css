@@ -3,73 +3,93 @@
 }
 
 .line {
-  
-  stroke-width: 3;
-  stroke: red;
-}
-.departureBox  {
-
- width: 150px;
- height: 150px;
-
-}
-.arrivalBox {
-  fill: red;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  stroke-width: 6;
+  stroke: gray;
 }
 
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-} */
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.noStation{
+.noStation {
   fill: gray;
 }
 .noLine {
   stroke: gray;
 }
-.highburyIslington {
-  fill: #0098D4;
+
+.VictoriaLine {
+  stroke: #0098d4;
+}
+.VictoriaStation {
+  fill: #0098d4;
+  color: white;
 }
 
-.victoria {
-  stroke: #0098D4;
+.MetropolitanLine {
+  stroke: #9b0056;
 }
-.oxford {
-  fill: #0098D4;
+.MetropolitanStation {
+  fill: #9b0056;
+  color: #fff;
 }
-.paddington {
-  fill: #F3A9BB;
+.NorthernLine {
+  stroke: #000000;
 }
-.king {
-  fill: #F3A9BB;
+.NorthernStation {
+  fill: #000000;
+  color:#fff;
 }
-.hammersmith {
-  stroke: #F3A9BB;
+.CircleLine {
+  stroke: #ffd300;
+}
+.CircleStation {
+  fill: #ffd300;
+  color: #fff;
+}
+.CentralLine {
+  stroke: #e32017;
+}
+.CentralStation {
+  fill: #e32017;
+  color: #fff;
+}
+.BakerlooLine {
+  stroke: #b36305;
+}
+.BakerlooStation {
+  fill: #b36305;
+  color: #fff;
+}
+.HammersmithCityLine {
+  stroke: #f3a9bb;
+}
+.HammersmithCityStation {
+  fill: #f3a9bb;
+  color: #fff;
+}
+.DistrictLine {
+  stroke: #00782a;
+}
+.DistrictStation {
+  fill: #00782a;
+  color: #fff;
+}
+.PiccadillyLine {
+  stroke: #003688;
+}
+.PiccadillyStation {
+  fill: #003688;
+  color: #fff;
+}
+.JubileeLine {
+  stroke: #a0a5a9;
+}
+.JubileeStation {
+  fill: #a0a5a9;
+  color: #fff;
+}
+.WaterlooCitylinesLine {
+  stroke: #95cdba;
+}
+.WaterlooCitylinesStation {
+  fill: #95cdba;
+  color: #fff;
 }

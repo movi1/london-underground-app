@@ -36,18 +36,65 @@ function App() {
     "name": "Paddington",
     "lines": ["Hammersmith & City", "District", "Circle", "Bakerloo"],
     "zones": [1]
-  }]
+  },
+{
+  "name" : "Aldgate",
+  "lines": ["Metropolitan", "Circle"],
+  "zones" : [1]
+},
+{
+  "name": "Baker Street",
+  "lines": ["Metropolitan", "Circle", "Hammersmith & City", "Jubilee"],
+  "zones": [1]
+},
+{
+  "name": "Barbican",
+  "lines": ["Metropolitan", "Circle", "Hammersmith & City"],
+  "zones" : [1]
+},
+{
+  "name": "Angel",
+  "lines": ["Northern"],
+  "zones" : [1]
+},
+{
+  "name": "Archway",
+  "lines": ["Northern"],
+  "zones" : [3]
+},
+{
+  "name": "Bank",
+  "lines": ["Central", "Northern", "Waterloo & City lines"],
+  "zones" : [1]
+},
+{
+  "name": "Bond Street",
+  "lines": ["Central", "Jubilee" ],
+  "zones" : [1]
+},
+{
+  "name": "Notting Hill Gate",
+  "lines": ["Circle", "District" ],
+  "zones" : [2]
+},
+{
+  "name": "Waterloo",
+  "lines": ["Jubelee", "Bakerloo", "Northern" ],
+  "zones" : [1]
+}]
 
   const lines = {
     "Victoria": ["Oxford Circus", "King's Cross St. Pancras", "Highbury & Islington"],
-    "Metropolitan": ["King's Cross St. Pancras"],
-    "Northern": ["King's Cross St. Pancras"],
+    "Metropolitan": ["King's Cross St. Pancras", "Aldgate", "Baker Street", "Barbican"],
+    "Northern": ["King's Cross St. Pancras", "Angel", "Archway", "Bank", "Waterloo"],
     "Piccadilly": ["King's Cross St. Pancras"],
-    "Circle": ["Paddington", "King's Cross St. Pancras"],
-    "Central": ["Oxford Circus"],
-    "Bakerloo": ["Paddington", "Oxford Circus"],
-    "Hammersmith & City": ["Paddington", "King's Cross St. Pancras"],
-    "District": ["Paddington"]
+    "Circle": ["Paddington", "King's Cross St. Pancras", "Notting Hill Gate", "Barbican","Baker Street", "Aldgate"],
+    "Central": ["Oxford Circus", "Bank", "Bond Street"],
+    "Bakerloo": ["Paddington", "Oxford Circus", "Waterloo"],
+    "Hammersmith & City": ["Paddington", "King's Cross St. Pancras", "Barbican", "Baker Street"],
+    "District": ["Notting Hill Gate","Paddington"],
+    "Waterloo & City lines": [ "Waterloo","Bank"],
+    "Jubilee": ["Bond Street", "Baker Street", "Waterloo"]
   }
 
   const [departure, setDeparture] = useState("noStation");
@@ -68,7 +115,9 @@ function App() {
   //checks if both departure and arrival stations exist on current array
   //if they both exist, update state and show the direct line
   //else set the line as no direct line
-  function doesStationsExistOnSameLine2(lines) {
+  function getRouteLine(lines) {
+
+    let stationCount = 0;
 
     for (var key in lines) {
 
@@ -76,15 +125,35 @@ function App() {
 
       if (stationsExist) {
         setLine(key)
+        stationCount++
 
-      } else {
-        setLine("No Direct Line")
+
+      }
+      else if (stationCount === 0) {
+        // console.log(stationCount)
+        // console.log(key)
+        setLine("No route exists")
 
       }
 
     }
 
   }
+
+  useEffect(() => {
+
+
+    const lineAllSpacesRemoved = line.replaceAll(' ', '');
+    const lineNoSpecialCharactersOrSpaces = lineAllSpacesRemoved.replace(/[^a-zA-Z0-9 ]/g, '');
+
+    setLineClass(lineNoSpecialCharactersOrSpaces + "Line") // Eg: VictoriaLine
+
+    console.log(line)
+    console.log(lineNoSpecialCharactersOrSpaces)
+
+    setDepartureStationClass(lineNoSpecialCharactersOrSpaces + "Station") // Eg: VictoriaStation
+    setArrivalStationClass(lineNoSpecialCharactersOrSpaces + "Station") // eg: VictoriaLine
+  });
 
 
   const handleSubmit = (event) => {
@@ -96,34 +165,36 @@ function App() {
 
     // let arrivalStation = form["arrive-stations-select"].value;
 
-    console.log(departure)
-    console.log(arrival)
 
+    getRouteLine(lines)
 
     // Stations --------------------------------------------------------------------------------------------------------------------------------
 
     //getting the stations name from the form select with the name of stations-select
-
-
-
     // set departure class for each station
-    if (departure === "Highbury & Islington") {
-      setDepartureStationClass("highburyIslington")
-    }
 
-    if (departure === "Oxford Circus") {
-      setDepartureStationClass("oxford")
 
-    }
+    // if (departure === "Highbury & Islington") {
+    //   setDepartureStationClass("highburyIslington")
+    //   console.log(line)
+      
+    // }
 
-    // set arrival class for each station
-    if (arrival === "Highbury & Islington") {
-      setArrivalStationClass("highburyIslington")
-    }
+    // if (departure === "Oxford Circus") {
+    //   setDepartureStationClass("oxford")
+      
+    // }
 
-    if (arrival === "Oxford Circus") {
-      setArrivalStationClass("oxford")
-    }
+    // // set arrival class for each station
+    // if (arrival === "Highbury & Islington") {
+    //   setArrivalStationClass("highburyIslington")
+      
+    // }
+
+    // if (arrival === "Oxford Circus") {
+    //   setArrivalStationClass("oxford")
+    
+    // }
 
     // Lines --------------------------------------------------------------------------------------------------------------------------------
 
@@ -142,7 +213,7 @@ function App() {
     //   // console.log('⛔️ neither condition is met');
     // }
 
-    doesStationsExistOnSameLine2(lines)
+
     // console.log(victoriaArray)
 
     // console.log(doesDepartureStationExist);
@@ -173,7 +244,7 @@ function App() {
 
       <svg height="400" width="400" >
         <line x1="400" y1="200" x2="0" y2="200" className={`${lineClass} line`} id='stationLine' />
-        <text x="180" y="180" fontFamily="Verdana" fontSize="13" fill="black">{line}</text>
+        <text x="180" y="180" fontFamily="Verdana" fontSize="20" fill="black">{line}</text>
         Sorry, your browser does not support inline SVG.
       </svg>
 
