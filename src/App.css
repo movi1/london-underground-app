@@ -1,7 +1,20 @@
 .App {
   text-align: center;
 }
-
+body {
+  display: grid;
+  background-image: img;
+}
+h1 {
+  align-items: center;
+ display: grid;
+font-family: 'Johnston Sans', sans-serif;
+padding: 20px 0 20px 0;
+margin-left: 380px;
+}
+/* .Logo {
+background-image: url(./Image/skyline-g0b36cc976_1920.jpg);
+} */
 .line {
   stroke-width: 6;
   stroke: gray;
@@ -93,3 +106,9 @@
   fill: #95cdba;
   color: #fff;
 }
+/* #stationLine2 {
+  display: none;
+}
+#station2 {
+  display: none;
+} */

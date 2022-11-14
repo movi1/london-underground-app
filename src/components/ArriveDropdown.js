@@ -12,7 +12,7 @@ function ArriveDropdown(props) {
 
   return (
     <>
-      <Form.Select aria-label="Select your Destination Station" name="arrive-stations-select" onChange={handleChange}>
+      <Form.Select  aria-label="Select your Destination Station" name="arrive-stations-select" onChange={handleChange}>
 
         <option>Select your Destination Station</option>
         {
