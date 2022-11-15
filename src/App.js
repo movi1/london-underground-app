@@ -6,13 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import DepartureDropdown from './components/DepartureDropdown';
 import ArriveDropdown from './components/ArriveDropdown';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Sky from '../src/';
+import Sky from '../src/skyline.jpg';
 
 function App() {
 
@@ -107,6 +107,8 @@ function App() {
   const [departureStationClass, setDepartureStationClass] = useState("noStation");
   const [lineClass, setLineClass] = useState("noLine");
   const [arrivalStationClass, setArrivalStationClass] = useState("noStation");
+  const [time, setTime] = useState('');
+ 
 
   //Takes an array as first input and items stations as second ([lineArray], station1, station2)
   function existOnSameLine(arr, ...items) {
@@ -156,7 +158,10 @@ function App() {
 
     setDepartureStationClass(lineNoSpecialCharactersOrSpaces + "Station") // Eg: VictoriaStation
     setArrivalStationClass(lineNoSpecialCharactersOrSpaces + "Station") // eg: VictoriaLine
+    
+
   });
+
 
 
   const handleSubmit = (event) => {
@@ -164,47 +169,70 @@ function App() {
 
     getRouteLine(lines)
 
+    //here
+
+    // let currentLineArray = lines.line
+    // let startingStation = departure
+    // let arrivalStation = arrival
+
+    let currentLine = lines[line]
+
+    let startingKey = arraySearch(lines[line], departure)
+    let arrivalKey = arraySearch(lines[line], arrival)
+    const myTime = lines[line].slice(startingKey, arrivalKey);
+    setTime(myTime.length * 4)
+    // console.log(myTime)
+    // console.log(myTime.length)
+    // console.log(myTime.length * 4)
+
+
+
+
   };
 
 
+  function arraySearch(array, station) {
+    console.log(array.length)
+    for (var key=0; key<array.length; key++)
+      if (array[key] === station)
+        return key;
+    return false;
+
+  }
+
   // TrainLineFunction(lines)
   // StationsFunction(stations)
+  // function focus() {
+  //   inputRef.current.focus()
+  //   inputRef.current.value = '4 minutes'
+  // }
 
-  // var arr = []
-  // stations.forEach(function(singleObject){
-  //   Object.keys(lines).forEach(function(objectToMatch){
-  //         if(objectToMatch.station?.includes(singleObject.key)){
-  //             arr.push(singleObject.name);
-  //             console.log(lines)
-  //         }
-  //     })
-  // })
 
   return (
     <>
       <Container>
 
-        <h1>London Underground 
+        <h1>London Underground
 
 
         </h1>
-        <img src={Sky} alt="Logo" />
-        <Form
-
-          onSubmit={handleSubmit}>
+        <img src={Sky} width="900px" height="300px" alt="Logo" />
+        <Form onSubmit={handleSubmit}>
           <Row>
             <Col>
               <DepartureDropdown stations={stations} setDeparture={setDeparture} />
               <ArriveDropdown stations={stations} setArrival={setArrival} />
-              <Button type="submit" variant="primary" >Check Route</Button>{' '}
+              {/* <input ref={inputRef} value={time} onChange={e => setTime(e.target.value)} /> */}
+              <div>Time travel is {setTime}</div>
+              <Button variant="primary" className="btn" type="submit" >Check Route</Button>
+
             </Col>
           </Row>
         </Form>
 
-
-        <Row>
-          <Col>
-            <svg width="100" height="100" className={departureStationClass}>
+        <Row >
+          <Col className='svg'>
+            <svg width="100" height="100" className={departureStationClass} id="departure">
               <circle cx="50" cy="50" r="50" className='departureBox' />
               <text x="20" y="50" fontFamily="Johnston Sans" fontSize="13" fill="white">{departure}</text>
             </svg>
@@ -220,14 +248,14 @@ function App() {
 
 
             <svg width="100" height="100">
-              <circle cx="50" cy="50" r="50" width="200" height="200" className={arrivalStationClass} />
+              <circle cx="50" cy="50" r="50" width="200" height="200" className={arrivalStationClass} id="arrival" />
               <text x="20" y="50" fontFamily="Johnston Sans" fontSize="13" fill="white">{arrival}</text>
               Sorry, your browser does not support inline SVG.
             </svg>
+          </Col>
 
 
-
-            <svg height="400" width="400" >
+          {/* <svg height="400" width="400" >
               <line x1="400" y1="200" x2="0" y2="200" className={`${lineClass} line`} id='stationLine2' />
               <text x="180" y="180" fontFamily="Johnston Sans" fontSize="20" fill="black">{line}</text>
               Sorry, your browser does not support inline SVG.
@@ -241,7 +269,7 @@ function App() {
               <text x="20" y="50" fontFamily="Johnston Sans" fontSize="13" fill="white">{arrival}</text>
               Sorry, your browser does not support inline SVG.
             </svg>
-          </Col>
+         */}
 
         </Row>
 

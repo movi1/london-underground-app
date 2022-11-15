@@ -12,9 +12,24 @@ font-family: 'Johnston Sans', sans-serif;
 padding: 20px 0 20px 0;
 margin-left: 380px;
 }
-/* .Logo {
-background-image: url(./Image/skyline-g0b36cc976_1920.jpg);
-} */
+img {
+  margin-left: 160px;
+  text-align: center;
+}
+form {
+  text-align: center;
+  margin-left: 160px;
+  margin-right: 235px;
+  padding: 20px;
+}
+
+.btn-primary {
+  text-align: center;
+/* margin-left: 350px; */
+display: flex;
+
+}
+
 .line {
   stroke-width: 6;
   stroke: gray;
@@ -112,3 +127,7 @@ background-image: url(./Image/skyline-g0b36cc976_1920.jpg);
 #station2 {
   display: none;
 } */
+
+.svg {
+  text-align: center;
+}
