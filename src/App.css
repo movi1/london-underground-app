@@ -136,7 +136,7 @@ display: flex;
 
 }
 .time {
-  font-family: 'Johnston Sans', sans-serif;
+  font-family: 'Johnston Sans', 'sans-serif';
   font-size: 20px;
 }
 .cost {
