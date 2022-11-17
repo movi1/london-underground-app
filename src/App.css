@@ -41,10 +41,13 @@ display: flex;
 }
 .noLine {
   stroke: gray;
+  font-size: 20px;
+  font-family: 'Johnston Sans', sans-serif;
 }
 
 .VictoriaLine {
   stroke: #0098d4;
+ 
 }
 .VictoriaStation {
   fill: #0098d4;
@@ -130,4 +133,13 @@ display: flex;
 
 .svg {
   text-align: center;
+
+}
+.time {
+  font-family: 'Johnston Sans', sans-serif;
+  font-size: 20px;
+}
+.cost {
+  font-family: 'Johnston Sans', sans-serif;
+  font-size: 20px;
 }

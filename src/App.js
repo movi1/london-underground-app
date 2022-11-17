@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, } from 'react';
 import DepartureDropdown from './components/DepartureDropdown';
 import ArriveDropdown from './components/ArriveDropdown';
 import Container from 'react-bootstrap/Container';
@@ -87,7 +87,17 @@ function App() {
     "zones": [1]
   }]
 
-  const lines = {
+
+
+  const [departure, setDeparture] = useState("noStation");
+  const [line, setLine] = useState("noLine");
+  const [arrival, setArrival] = useState("noStation");
+  const [departureStationClass, setDepartureStationClass] = useState("noStation");
+  const [lineClass, setLineClass] = useState("noLine");
+  const [arrivalStationClass, setArrivalStationClass] = useState("noStation");
+  const [time, setTime] = useState('');
+  const [cost, setCost] = useState('');
+  const [lines, setLines] = useState({
     "Victoria": ["Oxford Circus", "King's Cross St. Pancras", "Highbury & Islington"],
     "Metropolitan": ["King's Cross St. Pancras", "Aldgate", "Baker Street", "Barbican"],
     "Northern": ["King's Cross St. Pancras", "Angel", "Archway", "Bank", "Waterloo"],
@@ -99,16 +109,7 @@ function App() {
     "District": ["Notting Hill Gate", "Paddington"],
     "Waterloo & City lines": ["Waterloo", "Bank"],
     "Jubilee": ["Bond Street", "Baker Street", "Waterloo"]
-  }
-
-  const [departure, setDeparture] = useState("noStation");
-  const [line, setLine] = useState("noLine");
-  const [arrival, setArrival] = useState("noStation");
-  const [departureStationClass, setDepartureStationClass] = useState("noStation");
-  const [lineClass, setLineClass] = useState("noLine");
-  const [arrivalStationClass, setArrivalStationClass] = useState("noStation");
-  const [time, setTime] = useState('');
-
+  })
 
   //Takes an array as first input and items stations as second ([lineArray], station1, station2)
   function existOnSameLine(arr, ...items) {
@@ -162,10 +163,8 @@ function App() {
 
   });
 
-  // useEffect(() => {
-  //   document.title = `You clicked ${line} times`;
-  // });
-// the useEffect watch the state and if any update happened to those state it will run the code
+
+  // the useEffect watch the state and if any update happened to those state it will run the code
   useEffect(() => {
     //Runs on the first render
     //And any time any dependency value changes
@@ -180,7 +179,7 @@ function App() {
       console.log(arrivalKey)
 
       let myTime = 0;
-// nesting state
+      // nesting state
       if (startingKey > arrivalKey) {
         myTime = currentLine.slice(arrivalKey, startingKey);
       }
@@ -190,34 +189,30 @@ function App() {
 
 
       console.log(currentLine.slice(startingKey, arrivalKey))
-
+      setCost(4.23)
       setTime(myTime.length * 4)
       console.log(myTime)
       console.log(myTime.length)
       console.log(myTime.length * 4)
+
     }
     else {
       setTime(0)
+      setCost(0)
+
     }
 
 
-  }, [line, arrival, departure, lines]);
+  }, [line, arrival, departure, lines]
+  );
+
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     getRouteLine(lines)
-
-    //here
-
-    // let currentLineArray = lines.line
-    // let startingStation = departure
-    // let arrivalStation = arrival
-
-
-
-
-
 
   };
 
@@ -230,13 +225,6 @@ function App() {
     return false;
 
   }
-
-  // TrainLineFunction(lines)
-  // StationsFunction(stations)
-  // function focus() {
-  //   inputRef.current.focus()
-  //   inputRef.current.value = '4 minutes'
-  // }
 
 
   return (
@@ -253,10 +241,9 @@ function App() {
             <Col>
               <DepartureDropdown stations={stations} setDeparture={setDeparture} />
               <ArriveDropdown stations={stations} setArrival={setArrival} />
-              {/* <input ref={inputRef} value={time} onChange={e => setTime(e.target.value)} /> */}
-
               <Button variant="primary" className="btn" type="submit" >Check Route</Button>
-              <div>Time travel is {time} minutes</div>
+              <div className='time'>Time travel is {time} minutes</div>
+              <div className='cost'>The cost is {cost} £</div>
 
             </Col>
           </Row>
@@ -274,7 +261,7 @@ function App() {
 
             <svg height="400" width="400" >
               <line x1="400" y1="200" x2="0" y2="200" className={`${lineClass} line`} id='stationLine' />
-              <text x="180" y="180" fontFamily="Johnston Sans" fontSize="20" fill="black">{line}</text>
+              <text x="180" y="180" fontFamily='Johnston Sans'sans-serif fontSize="25" fill="black">{line}</text>
               Sorry, your browser does not support inline SVG.
             </svg>
 
