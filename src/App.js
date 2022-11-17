@@ -1,10 +1,7 @@
 
 import './App.css';
-import { Dropdown } from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect, } from 'react';
 import DepartureDropdown from './components/DepartureDropdown';
@@ -29,16 +26,8 @@ function App() {
   const [lines, setlines] = useState(Lines);
   const [stations, setStations] = useState(Stations)
 
-  //Takes an array as first input and items stations as second ([lineArray], station1, station2)
-  // checks if both departure and arrival stations exist on current array
-  function existOnSameLine(arr, ...items) {
-    return items.every(i => arr.includes(i))
-  }
-
-  // Updates/sets the state of the line if station route exists
-  // Loop through the lines object that contains an array: {"nameOfLine": ["Station Name"]}
-  // if they both exist, update state and show the direct line
-  // else set the line as no direct line
+  // Updates/sets the state of the line if station route exists, loop through the lines object that contains an array: {"nameOfLine": ["Station Name"]}
+  // if they both exist, update state and show the direct line, else set the line as no direct line
   function getRouteLine(lines) {
 
     let stationCount = 0;
@@ -56,6 +45,11 @@ function App() {
       }
     }
 
+  }
+
+  //Takes an array as first input and items stations as second ([lineArray], station1, station2), checks if both departure and arrival stations exist on current array
+  function existOnSameLine(arr, ...items) {
+    return items.every(i => arr.includes(i))
   }
 
   const handleSubmit = (event) => {
@@ -87,8 +81,7 @@ function App() {
 
   }
 
-  // the useEffect watch the state and if any update happened to those state it will run the code
- //Runs on the first render And any time any dependency value changes
+  // the useEffect watch the state and if any update happened to those state it will run the code, runs on the first render And any time any dependency value changes
 
   useEffect(() => {
 
