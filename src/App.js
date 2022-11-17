@@ -108,7 +108,7 @@ function App() {
   const [lineClass, setLineClass] = useState("noLine");
   const [arrivalStationClass, setArrivalStationClass] = useState("noStation");
   const [time, setTime] = useState('');
- 
+
 
   //Takes an array as first input and items stations as second ([lineArray], station1, station2)
   function existOnSameLine(arr, ...items) {
@@ -158,11 +158,50 @@ function App() {
 
     setDepartureStationClass(lineNoSpecialCharactersOrSpaces + "Station") // Eg: VictoriaStation
     setArrivalStationClass(lineNoSpecialCharactersOrSpaces + "Station") // eg: VictoriaLine
-    
+
 
   });
 
+  // useEffect(() => {
+  //   document.title = `You clicked ${line} times`;
+  // });
+// the useEffect watch the state and if any update happened to those state it will run the code
+  useEffect(() => {
+    //Runs on the first render
+    //And any time any dependency value changes
 
+
+    if (line !== "noLine" && line !== "No route exists") {
+      let currentLine = lines[line]
+
+      let startingKey = arraySearch(currentLine, departure)
+      console.log(startingKey)
+      let arrivalKey = arraySearch(currentLine, arrival)
+      console.log(arrivalKey)
+
+      let myTime = 0;
+// nesting state
+      if (startingKey > arrivalKey) {
+        myTime = currentLine.slice(arrivalKey, startingKey);
+      }
+      else {
+        myTime = currentLine.slice(startingKey, arrivalKey);
+      }
+
+
+      console.log(currentLine.slice(startingKey, arrivalKey))
+
+      setTime(myTime.length * 4)
+      console.log(myTime)
+      console.log(myTime.length)
+      console.log(myTime.length * 4)
+    }
+    else {
+      setTime(0)
+    }
+
+
+  }, [line, arrival, departure, lines]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -175,15 +214,7 @@ function App() {
     // let startingStation = departure
     // let arrivalStation = arrival
 
-    let currentLine = lines[line]
 
-    let startingKey = arraySearch(lines[line], departure)
-    let arrivalKey = arraySearch(lines[line], arrival)
-    const myTime = lines[line].slice(startingKey, arrivalKey);
-    setTime(myTime.length * 4)
-    // console.log(myTime)
-    // console.log(myTime.length)
-    // console.log(myTime.length * 4)
 
 
 
@@ -192,8 +223,8 @@ function App() {
 
 
   function arraySearch(array, station) {
-    console.log(array.length)
-    for (var key=0; key<array.length; key++)
+
+    for (var key = 0; key < array.length; key++)
       if (array[key] === station)
         return key;
     return false;
@@ -223,14 +254,16 @@ function App() {
               <DepartureDropdown stations={stations} setDeparture={setDeparture} />
               <ArriveDropdown stations={stations} setArrival={setArrival} />
               {/* <input ref={inputRef} value={time} onChange={e => setTime(e.target.value)} /> */}
-              <div>Time travel is {setTime}</div>
+
               <Button variant="primary" className="btn" type="submit" >Check Route</Button>
+              <div>Time travel is {time} minutes</div>
 
             </Col>
           </Row>
         </Form>
 
         <Row >
+
           <Col className='svg'>
             <svg width="100" height="100" className={departureStationClass} id="departure">
               <circle cx="50" cy="50" r="50" className='departureBox' />
