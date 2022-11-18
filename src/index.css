@@ -8,10 +8,10 @@ h1 {
   display: grid;
   font-family: "Alexandria";
   padding: 20px 0 20px 0;
-  margin-left: 380px;
 }
+
 img {
-  margin-left: 160px;
+  /* margin-left: 160px; */
   text-align: center;
 }
 form {
@@ -137,6 +137,7 @@ form {
 .cost {
   font-family: "Alexandria";
   font-size: 20px;
+
 }
 
 /* body {

@@ -1,4 +1,5 @@
 import './App.css';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,10 +9,11 @@ import ArriveDropdown from './components/ArriveDropdown';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Sky from '../src/skyline.jpg';
+import Sky from '../src/skyline.png';
 import Lines from './data/lines';
-import {Stations} from './data/stations';
+import { Stations } from './data/stations';
 
+// import Background from '../src/background.jpg'
 function App() {
 
   const [departure, setDeparture] = useState("noStation");
@@ -89,7 +91,7 @@ function App() {
       let startingKey = arraySearch(currentLine, departure)
       let arrivalKey = arraySearch(currentLine, arrival)
       let journeyTime = 0;
-      
+
       // nesting state
       if (startingKey > arrivalKey) {
         journeyTime = currentLine.slice(arrivalKey, startingKey);
@@ -112,8 +114,18 @@ function App() {
     <>
       <Container>
 
-        <h1>London Underground</h1>
-        <img src={Sky} width="900px" height="300px" alt="Logo" />
+
+        <Row>
+          <Col className='text-center'>
+            <h1>London Underground</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <img src={Sky} width="100%" height="350px" alt="Logo" />
+          </Col>
+        </Row>
+
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col>
