@@ -1,4 +1,3 @@
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
@@ -133,14 +132,14 @@ function App() {
           <Col className='svg'>
             <svg width="100" height="100" className={departureStationClass} id="departure">
               <circle cx="50" cy="50" r="50" className='departureBox' />
-              <text x="20" y="50" fontFamily="Johnston Sans" fontSize="13" fill="white">{departure}</text>
+              <text x="20" y="50" fontFamily='Alexandria' fontSize="13" fill="white">{departure}</text>
             </svg>
 
 
 
             <svg height="400" width="400" >
               <line x1="400" y1="200" x2="0" y2="200" className={`${lineClass} line`} id='stationLine' />
-              <text x="180" y="180" fontFamily='Johnston Sans' fontSize="25" fill="black">{line}</text>
+              <text x="180" y="180" fontFamily='Alexandria' fontSize="25" fill="black">{line}</text>
               Sorry, your browser does not support inline SVG.
             </svg>
 
@@ -148,7 +147,7 @@ function App() {
 
             <svg width="100" height="100">
               <circle cx="50" cy="50" r="50" width="200" height="200" className={arrivalStationClass} id="arrival" />
-              <text x="20" y="50" fontFamily="Johnston Sans" fontSize="13" fill="white">{arrival}</text>
+              <text x="20" y="50" fontFamily='Alexandria' fontSize="13" fill="white">{arrival}</text>
               Sorry, your browser does not support inline SVG.
             </svg>
           </Col>
