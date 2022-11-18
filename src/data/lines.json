@@ -1,0 +1,13 @@
+{
+    "Victoria": ["Oxford Circus", "King's Cross St. Pancras", "Highbury & Islington"],
+    "Metropolitan": ["King's Cross St. Pancras", "Aldgate", "Baker Street", "Barbican"],
+    "Northern": ["King's Cross St. Pancras", "Angel", "Archway", "Bank", "Waterloo"],
+    "Piccadilly": ["King's Cross St. Pancras"],
+    "Circle": ["Paddington", "King's Cross St. Pancras", "Notting Hill Gate", "Barbican", "Baker Street", "Aldgate"],
+    "Central": ["Oxford Circus", "Bank", "Bond Street", "Notthing Hill Gate", "Debden"],
+    "Bakerloo": ["Paddington", "Oxford Circus", "Waterloo"],
+    "Hammersmith & City": ["Paddington", "King's Cross St. Pancras", "Barbican", "Baker Street"],
+    "District": ["Notting Hill Gate", "Paddington"],
+    "Waterloo & City lines": ["Waterloo", "Bank"],
+    "Jubilee": ["Bond Street", "Baker Street", "Waterloo"]
+}
