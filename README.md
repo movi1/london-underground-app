@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# London Underground App
+## This is a React app that allows users to view the London Underground train lines and plan journeys between stations.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Features
+* View list of all stations
+* View train lines each station is on
+* Select departure and arrival stations
+* Display journey details between two stations
+* Display zones travelled through
 
-## Available Scripts
+## Install Dependencies
+```
+npm install
+```
 
-In the project directory, you can run:
+## Run App
+```
+npm start
+```
 
-### `npm start`
+App will be available at http://localhost:3000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Components
+The main React components are:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+StationList - displays all stations
+StationCard - displays name, lines and zones for a station
+SelectStations - departure and arrival selection dropdowns
+JourneyDetails - displays journey info between two stations
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app is deployed to GitHub Pages at:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[London Underground App](https://movi1.github.io/london-underground-app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To deploy updates:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Add a "homepage" URL in `package.json` if not already there
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Build the React app:
+```
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Commit changes and push to `main` branch
 
-## Learn More
+4. Deploy `build/` folder to `gh-pages` branch:
+```
+npm run deploy
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. GitHub Pages site will update after a few minutes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+6. Repeat steps 2-5 whenever you want to ship an update
