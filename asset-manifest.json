@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/london-underground-app/static/css/main.84be9512.css",
+    "main.js": "/london-underground-app/static/js/main.4ab6d30e.js",
+    "static/js/787.d525bfaf.chunk.js": "/london-underground-app/static/js/787.d525bfaf.chunk.js",
+    "static/media/skyline.png": "/london-underground-app/static/media/skyline.31e733a504709f802804.png",
+    "index.html": "/london-underground-app/index.html",
+    "main.84be9512.css.map": "/london-underground-app/static/css/main.84be9512.css.map",
+    "main.4ab6d30e.js.map": "/london-underground-app/static/js/main.4ab6d30e.js.map",
+    "787.d525bfaf.chunk.js.map": "/london-underground-app/static/js/787.d525bfaf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84be9512.css",
+    "static/js/main.4ab6d30e.js"
+  ]
+}
